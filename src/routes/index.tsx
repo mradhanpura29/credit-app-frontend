@@ -9,26 +9,26 @@ import DashboardPage from '@/pages/DashboardPage';
 
 export const router = createBrowserRouter([
   {
+    // Routes with AuthLayout (Default)
+    element: <AuthLayout />,
+    children: [
+      {
+        path: '/',
+        element: <LoginPage />,
+      },
+    ],
+  },
+  {
     // Routes with MainLayout
     element: <MainLayout />,
     children: [
       {
-        path: '/',
+        path: '/home',
         element: <HomePage />,
       },
       {
         path: '/about',
         element: <AboutPage />,
-      },
-    ],
-  },
-  {
-    // Routes with AuthLayout
-    element: <AuthLayout />,
-    children: [
-      {
-        path: '/login',
-        element: <LoginPage />,
       },
     ],
   },
