@@ -10,7 +10,7 @@ export default function ApproverDashboard() {
     <div>
       <div className="mb-6">
         <h2 className="text-3xl font-bold text-gray-900">Approver Dashboard</h2>
-        <p className="text-gray-600 mt-1">Welcome back, {user?.name}</p>
+        <p className="text-gray-600 mt-1">Welcome back, {user?.name || 'Guest User'}</p>
       </div>
 
       {/* Stats Overview */}
