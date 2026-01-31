@@ -8,9 +8,12 @@ export interface SignInRequest {
 
 // Response type
 export interface SignInResponse {
+  message: string;
   firstName: string;
   email: string;
   role: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 // Sign in API function
@@ -18,7 +21,7 @@ export const signIn = async (
   credentials: SignInRequest
 ): Promise<SignInResponse> => {
   const response = await api.post<SignInResponse, SignInRequest>(
-    "v1/signin",
+    "/signin",
     credentials
   );
   return response;

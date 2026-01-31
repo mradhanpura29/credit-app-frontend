@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginFormData } from "@/schemas/loginSchema";
+import { signIn } from "@/apis/loginApis";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -37,9 +38,21 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginFormData) => {
     setIsLoading(true);
     try {
-      await login(data.email, data.password, data.role);
+      // Call the sign-in API
+      const response = await signIn({
+        email: data.email,
+        password: data.password,
+      });
+      
+      // Save tokens to sessionStorage
+      sessionStorage.setItem('accessToken', response.accessToken);
+      sessionStorage.setItem('refreshToken', response.refreshToken);
+      
+      // On success, update auth context with response data
+      await login(response.email, data.password, data.role);
     } catch (error) {
       console.error("Login failed:", error);
+      // You can add toast notification here for error feedback
     } finally {
       setIsLoading(false);
     }
