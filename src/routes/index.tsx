@@ -1,9 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import MainLayout from "@/layout/MainLayout";
 import AuthLayout from "@/layout/AuthLayout";
 import DashboardLayout from "@/layout/DashboardLayout";
-import HomePage from "@/pages/HomePage";
-import AboutPage from "@/pages/AboutPage";
 import LoginPage from "@/pages/LoginPage";
 import ApproverDashboard from "@/pages/ApproverDashboard";
 import ApplicantDashboard from "@/pages/ApplicantDashboard";
