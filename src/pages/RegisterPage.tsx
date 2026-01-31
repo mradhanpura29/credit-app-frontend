@@ -1,11 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Card, CardContent} from '@/components/ui/card';
-import { Lock, Mail, Shield } from 'lucide-react';
+import { Lock, Mail, Shield, User } from 'lucide-react';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <div className="w-full">
       {/* Header */}
@@ -15,12 +13,27 @@ export default function LoginPage() {
             <Shield className="w-8 h-8 text-white" />
           </div>
         </div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-        <p className="text-gray-600">Sign in to access your account</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Registration Form</h1>
       </div>
 
       {/* Login Form */}
       <form className="space-y-5">
+         <div className="space-y-2">
+          <Label htmlFor="name" className="text-sm font-semibold text-gray-700">
+            Name
+          </Label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <User className="h-5 w-5 text-gray-400" />
+            </div>
+            <Input
+              id="name"
+              type="text"
+              placeholder="name"
+              className="pl-10 h-12"
+            />
+          </div>
+        </div>
         <div className="space-y-2">
           <Label htmlFor="email" className="text-sm font-semibold text-gray-700">
             Email Address
@@ -43,9 +56,24 @@ export default function LoginPage() {
             <Label htmlFor="password" className="text-sm font-semibold text-gray-700">
               Password
             </Label>
-            <a href="#" className="text-sm font-medium text-blue-600 hover:text-blue-700">
-              Forgot password?
-            </a>
+          </div>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Lock className="h-5 w-5 text-gray-400" />
+            </div>
+            <Input
+              id="password"
+              type="password"
+              placeholder="Enter your password"
+              className="pl-10 h-12"
+            />
+          </div>
+        </div>
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <Label htmlFor="password" className="text-sm font-semibold text-gray-700">
+             Confirm Password
+            </Label>
           </div>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -60,35 +88,19 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2">
-          <Checkbox id="remember-me" />
-          <Label htmlFor="remember-me" className="text-sm text-gray-700 font-normal cursor-pointer">
-            Remember me for 30 days
-          </Label>
-        </div>
-
         <Button type="submit" className="w-full h-12 text-base font-semibold bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800">
-          Sign In Securely
+          Register
         </Button>
       </form>
 
       {/* Footer */}
       <div className="mt-8 text-center text-sm text-gray-600">
-        Don't have an account?{' '}
+        Already have an account?{' '}
         <a href="#" className="font-semibold text-blue-600 hover:text-blue-700">
-          Sign up
+          Login
         </a>
       </div>
 
-      {/* Security Notice */}
-      <Card className="mt-8 bg-blue-50 border-blue-100">
-        <CardContent className="p-4">
-          <p className="text-xs text-center text-blue-900 flex items-center justify-center">
-            <Shield className="w-4 h-4 mr-1" />
-            Your connection is secured with 256-bit SSL encryption
-          </p>
-        </CardContent>
-      </Card>
     </div>
   );
 }
